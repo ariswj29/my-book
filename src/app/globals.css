@@ -24,6 +24,141 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.navbar {
+  background: var(--background);
+  padding: 1rem 0;
+  border-bottom: 1px solid #eaeaea;
+  position: fixed;
+  width: 100%;
+
+  .navbar-content {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .links {
+    display: flex;
+    gap: 1rem;
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.footer {
+  background: var(--background);
+  padding: 1rem 0;
+  border-top: 1px solid #eaeaea;
+  width: 100%;
+
+  .footer-content {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .about p {
+    text-align: justify;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      margin-bottom: 1rem;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Footer styling */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.footer h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer .links {
+  align-items: center;
+}
+
+.footer .links ul {
+  list-style: none;
+}
+
+.footer .links ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer .socials h4 {
+  font-weight: normal;
+  margin-bottom: 1rem;
+}
+
+.footer .socials-title {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.footer .socials-title a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer .socials-title a:hover {
+  color: #888;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .footer .links ul {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .footer .socials-title {
+    justify-content: flex-start;
+  }
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
