@@ -1,0 +1,23 @@
+.category {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  padding-left: 20rem;
+  padding-right: 20rem;
+  gap: 40px;
+  margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.categoryItem {
+  border: 2px solid #4caf50;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}

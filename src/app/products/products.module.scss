@@ -1,55 +1,81 @@
-.heroImage {
-  width: 100%;
-  height: 780px;
-  border-end-end-radius: 3rem;
-  border-end-start-radius: 3rem;
-
-  @media (max-width: 768px) {
-    float: left;
-    width: 100%;
-    height: 200px;
-    margin-bottom: 1rem;
-    border-end-end-radius: 1rem;
-    border-end-start-radius: 1rem;
-  }
-}
-
-.h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.slider {
-  text-align: center;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-}
-
-.mySwiper {
-  text-align: center;
-  width: 64rem;
-  margin: auto;
-  @media (max-width: 768px) {
-    width: 360px;
-  }
-}
-
-.sliderImage {
-  width: 920px;
-  height: 480px;
-  border-radius: 3rem;
-
-  @media (max-width: 768px) {
-    float: left;
-    width: 360px;
-    height: 200px;
-    border-radius: 2rem;
-  }
-}
-
 .product {
   text-align: center;
+  margin-top: 2rem;
   margin-bottom: 3rem;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    padding-left: 20rem;
+  }
+
+  @media (max-width: 768px) {
+    h3 {
+      padding-left: 1rem;
+    }
+  }
+}
+
+.productToolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.productToolbar select {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #eaeaea;
+  font-size: medium;
+
+  &:focus {
+    outline: none;
+    border: 1px solid #4caf50;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.productToolbar input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #eaeaea;
+  font-size: medium;
+  width: 380px;
+
+  &:focus {
+    outline: none;
+    border: 1px solid #4caf50;
+  }
+}
+
+.productToolbar button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: medium;
+  margin: 4px 1px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #45a049;
+  }
 }
 
 .productContainer {
@@ -69,6 +95,7 @@
 .productCard {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   border-radius: 1rem;
   background: var(--background);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -86,7 +113,6 @@
 .productCard .productInfo {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   padding: 1rem;
 }
 
@@ -106,7 +132,7 @@
   text-align: right;
 }
 
-.productCard .button {
+.productCard button {
   background-color: #4caf50;
   color: white;
   border: none;

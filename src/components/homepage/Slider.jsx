@@ -32,7 +32,6 @@ export const Slider = () => {
           disableOnInteraction: false,
         }}
         className={styles.mySwiper}
-        // style={{ textAlign: "center", width: "64rem" }}
       >
         {sliders.map((slider) => (
           <SwiperSlide key={slider.id}>

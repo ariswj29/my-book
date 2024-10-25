@@ -37,8 +37,10 @@ body {
   background: var(--background);
   padding: 1rem 0;
   border-bottom: 1px solid #eaeaea;
-  position: fixed;
+  position: fixed; /* Navbar tetap di atas saat scroll */
+  top: 0;
   width: 100%;
+  z-index: 1000; /* Agar berada di atas elemen lain */
 
   .navbar-content {
     max-width: 1024px;
@@ -48,24 +50,50 @@ body {
     align-items: center;
   }
 
-  @media (max-width: 768px) {
-    .navbar-content {
-      padding: 0 1rem;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .navbar-content {
-      padding: 0 1rem;
-    }
-  }
-
   .links {
     display: flex;
     gap: 1rem;
 
     a:hover {
       text-decoration: underline;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: var(--background);
+      padding: 1rem;
+      border-top: 1px solid #eaeaea;
+    }
+
+    .navbar-content {
+      padding: 0 1rem;
+      position: relative;
+
+      .hamburger {
+        display: inline-block;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        color: #333;
+        cursor: pointer;
+      }
+    }
+
+    .links.open {
+      display: flex;
+    }
+
+    @media (min-width: 769px) {
+      .navbar-content .hamburger {
+        display: none;
+      }
     }
   }
 }
