@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import useFetch from "../app/hooks/useFetch";
+import Link from "next/link";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +38,20 @@ export const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-content">
-        <Image src="/logo.png" alt="logo" width={200} height={50} />
+        <Link href="/">
+          {/* logo white and black mengikuti warna bg nya */}
+          <Image
+            src={
+              window.matchMedia &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "/logo-white.png"
+                : "/logo.png"
+            }
+            alt="logo"
+            width={200}
+            height={50}
+          />
+        </Link>
         {isMobile && (
           <button className="hamburger" onClick={toggleMenu}>
             ☰

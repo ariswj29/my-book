@@ -3,7 +3,7 @@ import styles from "./category.module.scss";
 import Image from "next/image";
 import useFetch from "@/app/hooks/useFetch";
 
-export const Category = () => {
+export const Category = ({ onCategorySelect }) => {
   const {
     data: categories,
     loading,
@@ -21,7 +21,7 @@ export const Category = () => {
         <div
           key={key}
           className={styles.categoryItem}
-          onClick={() => alert(item.title)}
+          onClick={() => onCategorySelect(item.title)}
         >
           <Image src={item.image} alt={item.title} width={100} height={100} />
           <h4>{item.title}</h4>
