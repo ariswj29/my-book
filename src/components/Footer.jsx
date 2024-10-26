@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import {
   FaSquareEnvelope,
   FaSquareFacebook,
@@ -7,6 +10,18 @@ import {
 } from "react-icons/fa6";
 
 export const Footer = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        "https://my-json-server.typicode.com/ariswj29/my-book/navbars"
+      );
+      const data = await response.json();
+      setData(data);
+    };
+  }, []);
+
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -22,18 +37,11 @@ export const Footer = () => {
         <div className="links">
           <h2>Links</h2>
           <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/products">Products</a>
-            </li>
-            <li>
-              <a href="/about">About</a>
-            </li>
-            <li>
-              <a href="/contact">Contact</a>
-            </li>
+            {data.map((item, key) => (
+              <li key={key}>
+                <a href={item.link}>{item.title}</a>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="socials">
