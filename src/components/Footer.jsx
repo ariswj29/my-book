@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   FaSquareEnvelope,
   FaSquareFacebook,
@@ -10,7 +11,7 @@ export const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="about">
-          <h1>MyBooks</h1>
+          <Image src="/logo-white.png" alt="logo" width={200} height={50} />
           <p>
             MyBooks is a website that provides a variety of books that you can
             buy. With MyBooks you can buy books easily and quickly. MyBooks

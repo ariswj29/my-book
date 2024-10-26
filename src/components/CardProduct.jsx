@@ -15,7 +15,15 @@ export const CardProduct = ({ product, key }) => {
       <div className={styles.productInfo}>
         <h5 className={styles.h5}>{product.category}</h5>
         <h4 className={styles.h4}>{product.title}</h4>
-        <p className={styles.p}>{product.price}</p>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <p className={styles.p}>
+            {Array.from({ length: Math.round(product.rating) }, (_, index) => (
+              <span key={index}>⭐</span>
+            ))}
+            ({product.rating}/5)
+          </p>
+          <p className={styles.p}>{product.price}</p>
+        </div>
         <Link className={styles.button} href={`/products/${product.slug}`}>
           Detail Product
         </Link>

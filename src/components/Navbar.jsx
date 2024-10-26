@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export const Navbar = () => {
@@ -24,7 +25,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-content">
-        <h1>MyBooks</h1>
+        <Image src="/logo.png" alt="logo" width={200} height={50} />
         {isMobile && (
           <button className="hamburger" onClick={toggleMenu}>
             ☰
