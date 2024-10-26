@@ -9,6 +9,11 @@
       "id": 2,
       "title": "Products",
       "link": "/products"
+    },
+    {
+      "id": 3,
+      "title": "Contact",
+      "link": "/contact"
     }
   ],
   "sliders": [

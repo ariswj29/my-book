@@ -20,6 +20,8 @@ export const Footer = () => {
       const data = await response.json();
       setData(data);
     };
+
+    fetchData();
   }, []);
 
   return (
