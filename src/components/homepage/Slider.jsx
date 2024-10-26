@@ -12,11 +12,20 @@ import {
   Scrollbar,
   A11y,
 } from "swiper/modules";
-import { sliders } from "@/data/data";
 import Image from "next/image";
 import styles from "@/app/page.module.scss";
+import useFetch from "@/app/hooks/useFetch";
 
 export const Slider = () => {
+  const {
+    data: sliders,
+    loading,
+    error,
+  } = useFetch("https://my-json-server.typicode.com/ariswj29/my-book/sliders");
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error... {error.message}</p>;
+
   return (
     <div className={styles.slider}>
       <h2 className={styles.h2}>Best Sellers</h2>

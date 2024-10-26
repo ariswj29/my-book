@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import useFetch from "../app/hooks/useFetch";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [data, setData] = useState([]);
 
   const toggleMenu = () => {
     console.log("toggleMenu");
@@ -17,6 +19,16 @@ export const Navbar = () => {
   };
 
   useEffect(() => {
+    const fetchNavbar = async () => {
+      const response = await fetch(
+        "https://my-json-server.typicode.com/ariswj29/my-book/navbars"
+      );
+      const data = await response.json();
+      setData(data);
+      return data;
+    };
+
+    fetchNavbar();
     checkIsMobile();
     window.addEventListener("resize", checkIsMobile);
     return () => window.removeEventListener("resize", checkIsMobile);
@@ -32,10 +44,11 @@ export const Navbar = () => {
           </button>
         )}
         <div className={`links ${isOpen ? "open" : ""}`}>
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/products">Products</a>
-          <a href="/contact">Contact</a>
+          {data.map((item, index) => (
+            <a key={index} href={item.link}>
+              {item.title}
+            </a>
+          ))}
         </div>
       </div>
     </nav>

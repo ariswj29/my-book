@@ -1,9 +1,34 @@
+"use client";
+
 import { CardProduct } from "@/components/CardProduct";
 import styles from "./products.module.scss";
 import { Category } from "@/components/Category";
-import { products } from "@/data/data";
+import useFetch from "@/app/hooks/useFetch";
+import { useEffect, useState } from "react";
 
 export default function ProductsPage() {
+  const { data, loading, error } = useFetch(
+    "https://my-json-server.typicode.com/ariswj29/my-book/products"
+  );
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error... {error.message}</p>;
+
+  // const [data, setData] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     const response = await fetch(
+  //       "https://my-json-server.typicode.com/ariswj29/my-book/products"
+  //     );
+  //     const data = await response.json();
+  //     setData(data);
+  //     return data;
+  //   };
+
+  //   fetchProducts();
+  // }, []);
+
   return (
     <div className={styles.product}>
       <h2>Products</h2>
@@ -27,7 +52,7 @@ export default function ProductsPage() {
         </div>
       </div>
       <div className={styles.productContainer}>
-        {products.map((product, key) => (
+        {data.map((product, key) => (
           <CardProduct key={key} product={product} />
         ))}
       </div>

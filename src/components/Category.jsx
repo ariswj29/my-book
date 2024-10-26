@@ -1,10 +1,20 @@
 "use client";
 import styles from "./category.module.scss";
 import Image from "next/image";
-import { categories } from "@/data/data";
+import useFetch from "@/app/hooks/useFetch";
 
 export const Category = () => {
-  console.log(categories, "categories");
+  const {
+    data: categories,
+    loading,
+    error,
+  } = useFetch(
+    "https://my-json-server.typicode.com/ariswj29/my-book/categories"
+  );
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error... {error.message}</p>;
+
   return (
     <div className={styles.category}>
       {categories?.map((item, key) => (
