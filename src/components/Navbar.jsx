@@ -9,6 +9,7 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [data, setData] = useState([]);
+  const [logo, setLogo] = useState("/logo.png");
 
   const toggleMenu = () => {
     console.log("toggleMenu");
@@ -17,6 +18,14 @@ export const Navbar = () => {
 
   const checkIsMobile = () => {
     setIsMobile(window.innerWidth <= 768);
+  };
+
+  const checkColorScheme = () => {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setLogo("/logo-white.png");
+    } else {
+      setLogo("/logo.png");
+    }
   };
 
   useEffect(() => {
@@ -31,26 +40,24 @@ export const Navbar = () => {
 
     fetchNavbar();
     checkIsMobile();
+    checkColorScheme();
     window.addEventListener("resize", checkIsMobile);
-    return () => window.removeEventListener("resize", checkIsMobile);
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", checkColorScheme);
+    return () => {
+      window.removeEventListener("resize", checkIsMobile);
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .removeEventListener("change", checkColorScheme);
+    };
   }, []);
 
   return (
     <nav className="navbar">
       <div className="navbar-content">
         <Link href="/">
-          {/* logo white and black mengikuti warna bg nya */}
-          <Image
-            src={
-              window.matchMedia &&
-              window.matchMedia("(prefers-color-scheme: dark)").matches
-                ? "/logo-white.png"
-                : "/logo.png"
-            }
-            alt="logo"
-            width={200}
-            height={50}
-          />
+          <Image src={logo} alt="logo" width={200} height={50} />
         </Link>
         {isMobile && (
           <button className="hamburger" onClick={toggleMenu}>

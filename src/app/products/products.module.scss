@@ -59,6 +59,10 @@
     outline: none;
     border: 1px solid #4caf50;
   }
+
+  @media (max-width: 768px) {
+    width: 200px;
+  }
 }
 
 .productToolbar button {
@@ -77,6 +81,10 @@
   &:hover {
     background-color: #45a049;
   }
+}
+
+.productSearch {
+  display: flex;
 }
 
 .productContainer {
